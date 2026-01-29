@@ -1,0 +1,51 @@
+name: Auto Tag Version
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'package.json'
+
+jobs:
+  tag-version:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Get package version
+      id: package_version
+      run: |
+        VERSION=$(node -p "require('./package.json').version")
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+    
+    - name: Check if tag exists
+      id: check_tag
+      run: |
+        TAG_EXISTS=$(git tag -l "v${{ steps.package_version.outputs.version }}" | wc -l)
+        if [ $TAG_EXISTS -eq 0 ]; then
+          echo "tag_exists=false" >> $GITHUB_OUTPUT
+        else
+          echo "tag_exists=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Create and push tag
+      if: steps.check_tag.outputs.tag_exists == 'false'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git tag -a "v${{ steps.package_version.outputs.version }}" -m "Release v${{ steps.package_version.outputs.version }}"
+        git push origin "v${{ steps.package_version.outputs.version }}"
+    
+    - name: Create GitHub Release
+      if: steps.check_tag.outputs.tag_exists == 'false'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.package_version.outputs.version }}
+        name: Release v${{ steps.package_version.outputs.version }}
+        generate_release_notes: true
+        draft: false
+        prerelease: false
