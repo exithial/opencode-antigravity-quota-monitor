@@ -1,0 +1,29 @@
+{
+  "refreshInterval": 60,
+  "lowQuotaThreshold": 20,
+  "criticalQuotaThreshold": 5,
+  "defaultView": "table",
+  "colors": true,
+  "asciiBars": true,
+  "notifications": {
+    "enabled": true,
+    "sound": false,
+    "desktop": true,
+    "lowQuota": true,
+    "criticalQuota": true
+  },
+  "history": {
+    "enabled": true,
+    "maxDays": 30,
+    "autoCleanup": true
+  },
+  "export": {
+    "autoExport": false,
+    "format": "json",
+    "directory": "./data/exports"
+  },
+  "accounts": {
+    "autoDetect": true,
+    "customPath": null
+  }
+}

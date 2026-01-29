@@ -1,0 +1,72 @@
+# Archivos de configuración local
+.env
+.env.local
+.env.*.local
+
+# Directorios de datos del usuario
+data/
+exports/
+logs/
+tmp/
+temp/
+
+# Archivos de historial y exportación
+*.log
+*.csv
+*.json (excepto package.json y config files)
+!package.json
+!package-lock.json
+!yarn.lock
+!tsconfig.json
+!jsconfig.json
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de build
+dist/
+build/
+node_modules/
+.cache/
+
+# Archivos de cobertura
+coverage/
+.nyc_output/
+
+# Archivos de sistema operativo
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Archivos de test
+*.test.js
+*.spec.js
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de configuración personal
+config.json
+antigravity-accounts.json
+
+# Archivos de caché
+.cache/
+.npm/
+.yarn/
+
+# Archivos de seguridad
+*.pem
+*.key
+*.crt
+*.csr

@@ -1,0 +1,59 @@
+{
+  "name": "opencode-antigravity-quota-monitor",
+  "version": "1.0.0",
+  "description": "Monitor de cuotas para cuentas Antigravity en OpenCode",
+  "type": "module",
+  "main": "src/cli.js",
+  "bin": {
+    "antigravity-quota": "src/cli.js",
+    "ag-quota": "src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "dev": "node src/cli.js --watch",
+    "tui": "node src/tui-minimal.js",
+    "build": "pkg src/cli.js --targets node18-win-x64 --output dist/antigravity-quota.exe",
+    "install-global": "npm link",
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "test:coverage": "node --test --experimental-test-coverage",
+    "test:verbose": "node --test --verbose"
+  },
+  "keywords": [
+    "opencode",
+    "antigravity",
+    "quota",
+    "monitor",
+    "google",
+    "gemini",
+    "claude"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "boxen": "^7.1.1",
+    "chalk": "^5.3.0",
+    "cli-progress": "^3.12.0",
+    "commander": "^12.1.0",
+    "figlet": "^1.7.0",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^9.2.20",
+    "ora": "^7.0.1",
+    "table": "^6.9.0",
+    "terminal-link": "^3.0.0"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tu-usuario/opencode-antigravity-quota-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tu-usuario/opencode-antigravity-quota-monitor/issues"
+  },
+  "homepage": "https://github.com/tu-usuario/opencode-antigravity-quota-monitor#readme"
+}
